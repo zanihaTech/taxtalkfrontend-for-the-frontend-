@@ -1,0 +1,260 @@
+/* Hero Section Styling */
+.hero-section {
+  position: relative;
+  text-align: center;
+  padding: 120px 20px;  /* Increased padding for a bigger hero section */
+  background: linear-gradient(to bottom, rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 1)), url('https://your-image-url.com/hero-background.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  animation: fadeIn 2s ease-out;
+  min-height: 80vh;  /* Ensures it takes up a bigger portion of the screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Hero Overlay to make text visible over the background */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* Slight dark overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Title Text Styling */
+.hero-section h1 {
+  font-size: 56px;  /* Increased font size */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+  animation: slideUp 2s ease-out;
+  line-height: 1.2;  /* Makes the heading more compact */
+}
+
+/* Subtitle Text Styling */
+.hero-section p {
+  font-size: 22px;  /* Increased font size */
+  font-weight: 300;
+  margin-bottom: 30px;
+  animation: slideUp 2s ease-out;
+  line-height: 1.5;
+  max-width: 80%;  /* Limits the width of the text */
+}
+
+/* Button Styling */
+.cta-btn {
+  background-color: #ffeb3b;
+  padding: 16px 30px;
+  font-size: 20px;  /* Bigger button size */
+  font-weight: bold;
+  color: #333;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #f9c80e;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-btn:focus {
+  outline: none;
+}
+
+/* Hero Section Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* For Mobile Devices */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 80px 20px;  /* Reduced padding on smaller screens */
+    min-height: 60vh;  /* Makes sure it doesn’t take too much space */
+  }
+
+  .hero-section h1 {
+    font-size: 36px;  /* Smaller heading font size for mobile */
+  }
+
+  .hero-section p {
+    font-size: 18px;  /* Smaller subtitle font size */
+    max-width: 90%;  /* Allows more text width on smaller screens */
+  }
+
+  .cta-btn {
+    font-size: 18px;
+    padding: 12px 24px;
+  }
+}
+
+/* For Extra Small Devices (Phones) */
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 28px;  /* Further smaller heading for very small screens */
+  }
+
+  .hero-section p {
+    font-size: 16px;  /* Further smaller subtitle */
+  }
+
+  .cta-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+/* Trending Section Styling */
+.trending-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+/* Trending Carousel Style for Mobile and Desktop */
+.trending-carousel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+.trending-carousel {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.carousel-btn {
+  background-color: transparent;
+  font-size: 24px;
+  color: #0073e6;
+  cursor: pointer;
+  border: none;
+}
+
+.carousel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.carousel-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.carousel-likes {
+  color: #777;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .trending-carousel-container {
+    gap: 15px;
+  }
+
+  .carousel-title {
+    font-size: 14px;
+  }
+
+  .carousel-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* About Section Styling */
+.about-section {
+  background-color: #fff; /* White background for the box */
+  color: #333; /* Dark text color */
+  padding: 40px;
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #0073e6;
+}
+
+.about-section p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.about-section .cta-btn {
+  background-color: #0073e6;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.about-section .cta-btn:hover {
+  background-color: #005bb5;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 30px 15px;
+  }
+
+  .about-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .about-section p {
+    font-size: 1rem;
+  }
+}

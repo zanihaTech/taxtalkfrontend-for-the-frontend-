@@ -1,0 +1,74 @@
+/* Sidebar Container */
+.sidebar {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Trending Blog Card */
+.trending-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trending-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* Trending Image */
+.trending-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Trending Content */
+.trending-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.trending-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #0073e6;
+  cursor: pointer;
+}
+
+.trending-title:hover {
+  text-decoration: underline;
+}
+
+.trending-likes {
+  font-size: 12px;
+  color: #666;
+}
+
+/* No Trending Blogs Message */
+.no-trending-message {
+  font-size: 14px;
+  text-align: center;
+  color: #999;
+  margin-top: 20px;
+}

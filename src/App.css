@@ -1,3 +1,11 @@
+/* Set the body background color to white */
+body {
+  background-color: white;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Center content in App */
 .App {
   text-align: center;
 }
@@ -14,8 +22,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #282c34; /* Dark background for header */
+  min-height: 100vh; /* Full viewport height */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +36,7 @@
   color: #61dafb;
 }
 
+/* Animation for the logo */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +44,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Ensure footer stays at the bottom */
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #f8f8f8; /* Example background color */
+  padding: 10px;
 }

@@ -1,0 +1,69 @@
+/* Container for Blog Posts Page */
+.blog-posts-page-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Blog Section */
+.main-blog-section {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 30px;
+}
+
+/* Blog List Container */
+.blog-list-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-page-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+/* Trending Sidebar Container */
+.trending-sidebar-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 2px solid #ffcc00;
+  padding-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-blog-section {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-list-container,
+  .trending-sidebar-container {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-page-title,
+  .sidebar-title {
+    font-size: 1.5rem;
+  }
+}
