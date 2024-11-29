@@ -13,13 +13,18 @@ const AdminDashboard = () => {
     content: '',
   });
 
+  const API_BASE_URL =
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:5000'
+      : `http://${window.location.hostname}:5000`;
+
   useEffect(() => {
     fetchPosts();
   }, []);
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/posts');
+      const response = await fetch(`${API_BASE_URL}/api/posts`);
       const data = await response.json();
       setPosts(data);
 
@@ -37,8 +42,8 @@ const AdminDashboard = () => {
     formData.append('imageFile', imagePreviewFile);
 
     const url = editingPost
-      ? `http://localhost:5000/api/posts/${editingPost._id}`
-      : 'http://localhost:5000/api/posts/create';
+      ? `${API_BASE_URL}/api/posts/${editingPost._id}`
+      : `${API_BASE_URL}/api/posts/create`;
     const method = editingPost ? 'PUT' : 'POST';
 
     try {
@@ -97,7 +102,7 @@ const AdminDashboard = () => {
   const handleDeletePost = async (id) => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
-        const response = await fetch(`http://localhost:5000/api/posts/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/api/posts/${id}`, {
           method: 'DELETE',
         });
         if (response.ok) {
@@ -213,55 +218,57 @@ const AdminDashboard = () => {
         </button>
       </div>
 
-      {showCreatePostOverlay && renderCreatePost()}
-
-      <table className="posts-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Likes</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {posts.map((post, index) => (
-            <tr key={post._id}>
-              <td>{index + 1}</td>
-              <td>
-                <img
-                  src={`http://localhost:5000${post.image || '/uploads/placeholder.jpg'}`}
-                  alt={post.title}
-                  className="thumbnail-img"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = '/uploads/placeholder.jpg';
-                  }}
-                />
-              </td>
-              <td>{post.title}</td>
-              <td>{post.author || 'Admin'}</td>
-              <td>{post.likes}</td>
-              <td>
-                <button
-                  className="edit-button"
-                  onClick={() => handleEditPost(post)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="delete-button"
-                  onClick={() => handleDeletePost(post._id)}
-                >
-                  Delete
-                </button>
-              </td>
+      <div className="table-container">
+        <table className="posts-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Likes</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {posts.map((post, index) => (
+              <tr key={post._id}>
+                <td>{index + 1}</td>
+                <td>
+                  <img
+                    src={`${API_BASE_URL}${post.image || '/uploads/placeholder.jpg'}`}
+                    alt={post.title}
+                    className="thumbnail-img"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/uploads/placeholder.jpg';
+                    }}
+                  />
+                </td>
+                <td>{post.title}</td>
+                <td>{post.author || 'Admin'}</td>
+                <td>{post.likes}</td>
+                <td>
+                  <button
+                    className="edit-button"
+                    onClick={() => handleEditPost(post)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDeletePost(post._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {showCreatePostOverlay && renderCreatePost()}
     </div>
   );
 };

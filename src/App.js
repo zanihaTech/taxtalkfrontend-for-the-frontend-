@@ -45,4 +45,3 @@ const App = () => {
 export default App;
 
 
-/Users/bigguy/taxtalkfrontend/src/components/BlogList/BlogList.js

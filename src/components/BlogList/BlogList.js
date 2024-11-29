@@ -8,13 +8,19 @@ const BlogList = () => {
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const navigate = useNavigate();
 
+  // Determine API base URL dynamically
+  const API_BASE_URL =
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:5000'
+      : `http://${window.location.hostname}:5000`;
+
   useEffect(() => {
     fetchPosts();
   }, []);
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/posts');
+      const response = await fetch(`${API_BASE_URL}/api/posts`); // Use API_BASE_URL here
       const data = await response.json();
       console.log('Fetched Posts for Blog List:', data);
       setPosts(data);
@@ -26,9 +32,9 @@ const BlogList = () => {
   const handleLike = async (id) => {
     try {
       console.log('Liking Post:', id);
-      const response = await fetch(`http://localhost:5000/api/posts/${id}/like`, {
+      const response = await fetch(`${API_BASE_URL}/api/posts/${id}/like`, {
         method: 'PUT',
-      });
+      }); // Use API_BASE_URL here
       if (response.ok) {
         console.log('Post liked successfully:', id);
         fetchPosts();
@@ -55,19 +61,15 @@ const BlogList = () => {
       {posts.map((post) => (
         <div key={post._id} className="blog-card">
           <div className="image-container">
-          <img
-  src={`http://localhost:5000${post.image || '/uploads/placeholder.jpg'}`}
-  alt={post.title}
-  className="thumbnail-img"
-  onError={(e) => {
-    e.target.onerror = null; // Prevent infinite loop
-    e.target.src = '/uploads/placeholder.jpg'; // Use placeholder if image fails
-  }}
-/>
-
-
-
-
+            <img
+              src={`${API_BASE_URL}${post.image || '/uploads/placeholder.jpg'}`} // Use API_BASE_URL here
+              alt={post.title}
+              className="thumbnail-img"
+              onError={(e) => {
+                e.target.onerror = null; // Prevent infinite loop
+                e.target.src = '/uploads/placeholder.jpg'; // Use placeholder if image fails
+              }}
+            />
           </div>
 
           <div className="post-content">
@@ -88,7 +90,7 @@ const BlogList = () => {
               {dropdownVisible === post._id && (
                 <div className="share-dropdown">
                   <a
-                    href={`https://facebook.com/sharer/sharer.php?u=http://localhost:3000/post/${post._id}`}
+                    href={`https://facebook.com/sharer/sharer.php?u=http://${window.location.hostname}:3000/post/${post._id}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -98,7 +100,7 @@ const BlogList = () => {
                     <FaInstagram /> Instagram
                   </a>
                   <a
-                    href={`https://wa.me/?text=http://localhost:3000/post/${post._id}`}
+                    href={`https://wa.me/?text=http://${window.location.hostname}:3000/post/${post._id}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

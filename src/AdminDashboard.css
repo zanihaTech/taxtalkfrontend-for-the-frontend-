@@ -29,6 +29,8 @@
   display: flex;
   justify-content: space-around;
   margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .stat-card {
@@ -37,6 +39,8 @@
   text-align: center;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  max-width: 200px;
 }
 
 .stat-card h3 {
@@ -64,64 +68,141 @@
   background-color: #45a049;
 }
 
-/* Full Screen Create Post Form */
-.create-post-form-container {
+/* Table Styles */
+.table-container {
+  overflow-x: auto; /* Add horizontal scroll for the table */
+  margin-top: 20px;
+}
+
+.posts-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px; /* Ensure table doesn't shrink too much */
+}
+
+.posts-table th,
+.posts-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.posts-table tr:hover {
+  background-color: #f9f9f9; /* Subtle highlight */
+}
+
+.posts-table img,
+.thumbnail-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover; /* Maintain aspect ratio without distortion */
+  border-radius: 5px;
+}
+
+/* Edit and Delete Buttons */
+.edit-button,
+.delete-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+}
+
+.edit-button {
+  background-color: #2196F3;
+}
+
+.delete-button {
+  background-color: #f44336;
+}
+
+.edit-button:hover {
+  background-color: #0b7dda;
+}
+
+.delete-button:hover {
+  background-color: #e53935;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .stats-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .stat-card {
+    width: 100%; /* Full width for smaller screens */
+    max-width: none;
+  }
+
+  .posts-table th,
+  .posts-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .edit-button,
+  .delete-button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Full-Screen Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  width: 100%;
-}
-
-.create-post-form-container h2 {
-  color: #333;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.form-input,
-.form-textarea,
-.form-input-file {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  font-size: 16px;
-}
-
-.form-textarea {
-  height: 150px;
-  resize: vertical;
-}
-
-.image-preview-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .image-preview {
-  max-width: 200px;
-  max-height: 150px;
-  border-radius: 5px;
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  margin-top: 20px;
   border: 1px solid #ddd;
-  padding: 5px;
+  border-radius: 8px;
 }
 
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+.large-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.large-textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  resize: vertical;
 }
 
 .save-button,
@@ -150,80 +231,6 @@ label {
 .cancel-button:hover {
   background-color: #e53935;
 }
-
-/* Table Styles */
-.posts-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.posts-table th,
-.posts-table td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.posts-table tr:hover {
-  background-color: #f9f9f9; /* Subtle highlight */
-}
-
-.posts-table img,
-.thumbnail-img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover; /* Maintain aspect ratio without distortion */
-  border-radius: 5px; /* Optional for aesthetics */
-  display: inline-block; /* Prevent layout shifts */
-  background-color: #f0f0f0; /* Placeholder background for loading */
-}
-
-/* Edit and Delete Buttons */
-.edit-button,
-.delete-button {
-  padding: 10px;
-  font-size: 14px;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-}
-
-.edit-button {
-  background-color: #2196F3;
-}
-
-.delete-button {
-  background-color: #f44336;
-}
-
-.edit-button:hover {
-  background-color: #0b7dda;
-}
-
-.delete-button:hover {
-  background-color: #e53935;
-}
-
-/* Responsiveness */
-@media (max-width: 768px) {
-  .stats-section {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .posts-table th,
-  .posts-table td {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .form-input,
-  .form-textarea {
-    font-size: 14px;
-  }
-}
 /* Full-Screen Overlay */
 .overlay {
   position: fixed;
@@ -242,41 +249,38 @@ label {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: 50%;
+  width: 90%; /* Default width for smaller screens */
+  max-width: 500px; /* Max width for larger screens */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  max-height: 90%; /* Ensure the content fits within the viewport */
 }
 
-.image-preview {
-  width: 100%;
-  height: auto;
-  margin-top: 10px;
-  border: 1px solid #ddd;
-}
-.large-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 18px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-}
-
+/* Ensure large inputs and textareas fit */
+.large-input,
 .large-textarea {
   width: 100%;
-  height: 200px;
   padding: 10px;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 20px;
   border-radius: 8px;
   border: 1px solid #ddd;
-  resize: vertical;
+  box-sizing: border-box;
 }
 
-.image-preview {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+/* Adjust overlay content for smaller screens */
+@media (max-width: 768px) {
+  .overlay-content {
+    width: 95%; /* Use almost full width on smaller screens */
+    max-width: 95%; /* Override max-width for smaller screens */
+    padding: 15px; /* Reduce padding */
+  }
+}
+
+/* Adjust for very small screen widths */
+@media (max-width: 480px) {
+  .overlay-content {
+    width: 100%; /* Full width for very small screens */
+    border-radius: 0; /* Remove border radius for edge-to-edge look */
+  }
 }

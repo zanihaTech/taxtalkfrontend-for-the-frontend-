@@ -9,18 +9,24 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  // Determine API base URL dynamically
+  const API_BASE_URL =
+    window.location.hostname === 'localhost'
+      ? 'http://localhost:5000'
+      : `http://${window.location.hostname}:5000`;
+
   const login = async (username, password) => {
     try {
       setLoading(true); // Start loading spinner
-      const response = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
       });
 
       const data = await response.json();
       if (response.ok) {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem('token', data.token);
         navigate('/admin/dashboard'); // Navigate to the admin dashboard
       } else {
         setError(data.message || 'Invalid username or password');
